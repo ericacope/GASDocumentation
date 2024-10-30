@@ -776,6 +776,8 @@ This is triggered from any changes to `Attributes`, whether using `Attribute` se
 
 **Note:** Epic's comments for `PreAttributeChange()` say not to use it for gameplay events and instead use it mainly for clamping. The recommended place for gameplay events on `Attribute` change is `UAbilitySystemComponent::GetGameplayAttributeValueChangeDelegate(FGameplayAttribute Attribute)` ([Responding to Attribute Changes](#concepts-a-changes)).
 
+**Note:** When clamping using PreAttributeChange() keep in mind that infinite effects change the base attribute and not the current so the clamp will be ignored, it can be solved by clamping attributes on PreAttributeBaseChange as well.
+
 **[⬆ Back to Top](#table-of-contents)**
 
 <a name="concepts-as-postgameplayeffectexecute"></a>
